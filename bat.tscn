@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cylyxbef87hr0"]
+
+[ext_resource type="Script" uid="uid://1f0xmuys3emb" path="res://bat.gd" id="1_tofr1"]
+[ext_resource type="Texture2D" uid="uid://b434vwm86bq87" path="res://icon.svg" id="2_tofr1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8e5j1"]
+radius = 20.0
+
+[node name="Bat" type="Node2D" unique_id=217400287]
+script = ExtResource("1_tofr1")
+metadata/_edit_group_ = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1008073356]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1734732738]
+shape = SubResource("CircleShape2D_8e5j1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1058225091]
+scale = Vector2(0.315, 0.315)
+texture = ExtResource("2_tofr1")
