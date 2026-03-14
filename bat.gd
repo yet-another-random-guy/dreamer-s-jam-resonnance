@@ -23,14 +23,19 @@ func _process(delta: float) -> void:
 		accel.y -= 1
 	if Input.is_action_pressed("Down"):
 		accel.y += 1
-		
+	if Input.is_action_just_pressed("Dash") and $Dash.is_stopped():
+		$Dash.start()
+	
 	accel = accel.normalized() * acceleration * delta
+	
+	if !$Dash.is_stopped():
+		accel *= 10
 	
 	if accel == Vector2.ZERO:
 		spd *= air_res
 	else:
 		spd += accel
-		if spd.length() > max_spd:
+		if spd.length() > max_spd and $Dash.is_stopped():
 			spd = spd.normalized() * max_spd
 	
 	position += spd
