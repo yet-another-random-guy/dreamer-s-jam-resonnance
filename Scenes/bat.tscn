@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://cylyxbef87hr0"]
 
-[ext_resource type="Script" uid="uid://1f0xmuys3emb" path="res://bat.gd" id="1_tofr1"]
-[ext_resource type="Texture2D" uid="uid://b434vwm86bq87" path="res://icon.svg" id="2_tofr1"]
+[ext_resource type="Script" uid="uid://1f0xmuys3emb" path="res://Scripts/bat.gd" id="1_jckqh"]
+[ext_resource type="Texture2D" uid="uid://dtxdjh7fvqsfj" path="res://Assets/bat.png" id="2_jckqh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8e5j1"]
-radius = 20.0
+radius = 5.0
 
 [node name="Bat" type="Node2D" unique_id=217400287]
-script = ExtResource("1_tofr1")
+position = Vector2(148, 88)
+script = ExtResource("1_jckqh")
 metadata/_edit_group_ = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1008073356]
@@ -16,8 +17,7 @@ metadata/_edit_group_ = true
 shape = SubResource("CircleShape2D_8e5j1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1058225091]
-scale = Vector2(0.315, 0.315)
-texture = ExtResource("2_tofr1")
+texture = ExtResource("2_jckqh")
 
 [node name="Dash" type="Timer" parent="." unique_id=1746856191]
 wait_time = 0.3

@@ -14,6 +14,13 @@ config/name="Resonance"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
 [dotnet]
 
 project/assembly_name="Resonance"
@@ -57,4 +64,5 @@ Dash={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
