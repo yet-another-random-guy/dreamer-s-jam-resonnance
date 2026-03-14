@@ -7,7 +7,6 @@
 radius = 5.0
 
 [node name="Bat" type="Node2D" unique_id=217400287]
-position = Vector2(148, 88)
 script = ExtResource("1_jckqh")
 metadata/_edit_group_ = true
 
@@ -20,5 +19,5 @@ shape = SubResource("CircleShape2D_8e5j1")
 texture = ExtResource("2_jckqh")
 
 [node name="Dash" type="Timer" parent="." unique_id=1746856191]
-wait_time = 0.3
+wait_time = 0.1
 one_shot = true

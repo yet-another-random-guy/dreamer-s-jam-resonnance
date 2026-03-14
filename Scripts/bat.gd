@@ -1,4 +1,5 @@
 extends Node2D
+const dash_accel = 100.0
 const acceleration = 10.0
 const air_res = 0.7
 const max_spd = 5.0
@@ -26,10 +27,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Dash") and $Dash.is_stopped():
 		$Dash.start()
 	
-	accel = accel.normalized() * acceleration * delta
-	
-	if !$Dash.is_stopped():
-		accel *= 10
+	accel = accel.normalized() * delta
+	if $Dash.is_stopped():
+		accel *= acceleration
+	else:
+		accel *= dash_accel
 	
 	if accel == Vector2.ZERO:
 		spd *= air_res
