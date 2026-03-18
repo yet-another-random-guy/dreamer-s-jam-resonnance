@@ -90,15 +90,11 @@ occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lsht4")
 
-[sub_resource type="Gradient" id="Gradient_ojh4s"]
-offsets = PackedFloat32Array(0, 0.6751152)
+[sub_resource type="Gradient" id="Gradient_ekrpx"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-metadata/_snap_count = 100
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bo1nx"]
-gradient = SubResource("Gradient_ojh4s")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qrmu1"]
+gradient = SubResource("Gradient_ekrpx")
 
 [node name="RoomTest" type="Node2D" unique_id=1788953972]
 script = ExtResource("1_ekrpx")
@@ -120,5 +116,5 @@ position = Vector2(159.99998, 87.99999)
 scale = Vector2(5, 2.75)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
-texture = SubResource("GradientTexture2D_bo1nx")
+texture = SubResource("GradientTexture2D_qrmu1")
 texture_scale = 2.0
