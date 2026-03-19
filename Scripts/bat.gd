@@ -1,53 +1,33 @@
-extends Node2D
-const dash_accel = 100.0
-const acceleration = 10.0
-const air_res = 0.7
-const max_spd = 5.0
+extends CharacterBody2D
 
-var spd: Vector2
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	spd = Vector2.ZERO
-	pass # Replace with function body.
+const SPEED = 300.0
+const DASH_SPEED = 500.0
+const MAX_SPEED = 100.0
+const AIR_RES = 3
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var accel = Vector2(0, 0)
+func _physics_process(delta: float) -> void:
+	# Get the input direction and handle the movement/deceleration.
+	var direction
+	var horizontal := Input.get_axis("Left", "Right")
+	var vertical := Input.get_axis("Up", "Down")
 	
-	# Lis les input
-	if Input.is_action_pressed("Right"):
-		accel.x += 1
-	if Input.is_action_pressed("Left"):
-		accel.x -= 1
-	if Input.is_action_pressed("Up"):
-		accel.y -= 1
-	if Input.is_action_pressed("Down"):
-		accel.y += 1
-	if Input.is_action_just_pressed("Dash") and $Dash.is_stopped():
+	if Input.is_action_just_pressed("Dash"):
 		$Dash.start()
+		velocity = velocity.normalized() * DASH_SPEED
 	
-	# Calcule l'acceleration
-	accel = accel.normalized() * delta
 	if $Dash.is_stopped():
-		accel *= acceleration
-	else:
-		accel *= dash_accel
+		direction = Vector2(horizontal, vertical).normalized()
+		
+		if !direction.is_zero_approx():
+			velocity += direction * SPEED * delta
+			if velocity.length() > MAX_SPEED:
+				velocity = velocity.normalized() * MAX_SPEED
+		
+	velocity = velocity.move_toward(Vector2.ZERO, AIR_RES)
 	
-	# Calcule la vitesse
-	if accel == Vector2.ZERO:
-		spd *= air_res
-	else:
-		spd += accel
-		if spd.length() > max_spd and $Dash.is_stopped():
-			spd = spd.normalized() * max_spd
-	
-	# Modifie la position
-	position += spd
-	
+	move_and_slide()
+
 	# Change l'orientation
-	if spd.x != 0:
-		$Sprite.flip_h = (spd.x < 0)
-	
-	pass
+	if velocity.x != 0:
+		$Sprite.flip_h = (velocity.x < 0)
