@@ -1,18 +1,17 @@
 [gd_scene format=3 uid="uid://cylyxbef87hr0"]
 
-[ext_resource type="Script" uid="uid://1f0xmuys3emb" path="res://Scripts/bat.gd" id="1_jckqh"]
+[ext_resource type="Script" uid="uid://dcr08vo5ps2wp" path="res://Scripts/bat_2.gd" id="1_jckqh"]
 [ext_resource type="Texture2D" uid="uid://dtxdjh7fvqsfj" path="res://Assets/bat.png" id="2_jckqh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8e5j1"]
 radius = 5.0
 
-[node name="Bat" type="Node2D" unique_id=217400287]
+[node name="Bat" type="CharacterBody2D" unique_id=2040524158]
+motion_mode = 1
 script = ExtResource("1_jckqh")
 metadata/_edit_group_ = true
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1008073356]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1734732738]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1734732738]
 shape = SubResource("CircleShape2D_8e5j1")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1058225091]
