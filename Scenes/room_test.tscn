@@ -1,8 +1,8 @@
-[gd_scene format=4 uid="uid://yfcqn4r8dunk"]
+[gd_scene format=4 uid="uid://ug4wgbfudhna"]
 
-[ext_resource type="Script" uid="uid://ctd1fjpbfgghf" path="res://Scripts/test_light.gd" id="1_ekrpx"]
 [ext_resource type="Texture2D" uid="uid://hu843fwgitd" path="res://Assets/Walls.png" id="2_qrmu1"]
 [ext_resource type="Texture2D" uid="uid://cbhowb4dbv73q" path="res://Assets/texture_light1.png" id="3_qrmu1"]
+[ext_resource type="PackedScene" uid="uid://ca0tasyxlbh8y" path="res://Scenes/echo_lines.tscn" id="4_8ou07"]
 [ext_resource type="PackedScene" uid="uid://cylyxbef87hr0" path="res://Scenes/bat.tscn" id="4_a88o5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7s6n"]
@@ -72,7 +72,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lsht4")
 
 [node name="RoomTest" type="Node2D" unique_id=1788953972]
-script = ExtResource("1_ekrpx")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=15048943]
 z_index = -1
@@ -83,16 +82,19 @@ tile_set = SubResource("TileSet_xehqc")
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAgAAAAAAAIAAAAAAAkAAAAAAAIAAAAAAAoAAAAAAAMAAAABAAoAAAACAAAAAAACAAoAAAACAAAAAAADAAoAAAACAAAAAAAEAAoAAAACAAAAAAAFAAoAAAACAAAAAAAGAAoAAAACAAAAAAAHAAoAAAACAAAAAAAIAAoAAAACAAAAAAAJAAoAAAACAAAAAAAKAAoAAAACAAAAAAALAAoAAAACAAAAAAAMAAoAAAACAAAAAAANAAoAAAACAAAAAAAOAAoAAAACAAAAAAAPAAoAAAACAAAAAAAQAAoAAAACAAAAAAARAAoAAAACAAAAAAASAAoAAAACAAAAAAATAAoAAAADAAMAAAATAAkAAAAAAAIAAAATAAgAAAAAAAIAAAATAAcAAAAAAAIAAAATAAYAAAAAAAIAAAATAAUAAAADAAEAAAATAAQAAAAAAAIAAAATAAMAAAAAAAIAAAATAAIAAAAAAAIAAAATAAEAAAAAAAIAAAATAAAAAAADAAAAAAASAAAAAAACAAAAAAARAAAAAAACAAAAAAAQAAAAAAACAAAAAAAPAAAAAAACAAAAAAAOAAAAAAACAAAAAAANAAAAAAACAAAAAAAMAAAAAAACAAAAAAALAAAAAAACAAAAAAAKAAAAAAACAAAAAAAJAAAAAAACAAAAAAAIAAAAAAACAAAAAAAHAAAAAAACAAAAAAAGAAAAAAACAAAAAAAFAAAAAAACAAAAAAAEAAAAAAACAAAAAAADAAAAAAACAAAAAAACAAAAAAACAAAAAAABAAAAAAACAAAAAAASAAUAAAACAAAAAAARAAUAAAACAAAAAAAQAAUAAAACAAAAAAAPAAUAAAACAAAAAAAOAAUAAAACAAAAAAANAAUAAAAAAAEAAAANAAQAAAAAAAIAAAANAAYAAAAAAAIAAAANAAcAAAABAAIAAAANAAMAAAADAAIAAAADAAMAAAAAAAAAAAAHAAcAAAADAAMAAAAGAAcAAAACAAAAAAAFAAcAAAACAAAAAAAEAAcAAAACAAAAAAADAAcAAAAAAAMAAAADAAYAAAAAAAIAAAADAAUAAAAAAAIAAAADAAQAAAAAAAIAAAAHAAYAAAAAAAIAAAAHAAUAAAAAAAIAAAAHAAQAAAAAAAIAAAAEAAMAAAACAAAAAAAFAAMAAAACAAAAAAAGAAMAAAACAAAAAAAHAAMAAAADAAAAAAA=")
 tile_set = SubResource("TileSet_fr46g")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1936021571]
-color = Color(0.003465655, 0.003465655, 0.003465655, 1)
-
 [node name="Light" type="PointLight2D" parent="." unique_id=1779601591]
-position = Vector2(164, 101.00001)
+position = Vector2(162.99998, 90.000015)
 scale = Vector2(5, 2.75)
+blend_mode = 2
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 texture = ExtResource("3_qrmu1")
 texture_scale = 2.0
 
 [node name="Bat" parent="." unique_id=217400287 instance=ExtResource("4_a88o5")]
-position = Vector2(168, 92)
+z_index = 1
+position = Vector2(171, 65)
+
+[node name="Echo_Lines" parent="." unique_id=620077615 instance=ExtResource("4_8ou07")]
+
+[connection signal="new_scan" from="Bat" to="Echo_Lines" method="_on_bat_new_scan"]

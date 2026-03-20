@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ca0tasyxlbh8y"]
+
+[ext_resource type="Script" uid="uid://dcor0v1my5rsj" path="res://Scripts/echo_lines.gd" id="1_0u8wi"]
+
+[node name="Echo_Lines" type="Node2D" unique_id=620077615]
+light_mask = 0
+script = ExtResource("1_0u8wi")
