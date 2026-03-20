@@ -83,7 +83,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAI
 tile_set = SubResource("TileSet_fr46g")
 
 [node name="Light" type="PointLight2D" parent="." unique_id=1779601591]
-position = Vector2(162.99998, 90.000015)
+position = Vector2(88.00001, 88)
 scale = Vector2(5, 2.75)
 blend_mode = 2
 shadow_enabled = true

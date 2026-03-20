@@ -5,7 +5,7 @@ const DASH_SPEED = 500.0
 const MAX_SPEED = 100.0
 const AIR_RES = 3
 
-signal new_scan(lines: Array[PackedVector2Array])
+signal new_scan(lines: PackedVector2Array)
 
 func _ready() -> void:
 	pass
@@ -19,7 +19,6 @@ func _physics_process(delta: float) -> void:
 	#gerer l'echo
 	if Input.is_action_just_pressed("Echo"):
 		scan_walls()
-		print("Bonjour?")
 		new_scan.emit(scan_lines)
 
 	if Input.is_action_just_pressed("Dash"):
@@ -42,9 +41,9 @@ func _physics_process(delta: float) -> void:
 	if velocity.x != 0:
 		$Sprite.flip_h = (velocity.x < 0)
 
-var scan_lines: Array[PackedVector2Array]
-const SCAN_RANGE = 200;
-const SCAN_PRECISION = 100;
+var scan_lines: PackedVector2Array
+const SCAN_RANGE = 200
+const SCAN_PRECISION = 4096
 
 func scan_walls():
 	var angle
@@ -60,11 +59,6 @@ func scan_walls():
 		
 		if $RayCast2D.is_colliding() == true:
 			points.append($RayCast2D.get_collision_point())
-		
-		elif points.size() >= 2:
-			scan_lines.append(points.duplicate())
-			points.clear()
 			
 	if points.size() >= 2:
-		scan_lines.append(points.duplicate())
-		points.clear()
+		scan_lines = points.duplicate()
