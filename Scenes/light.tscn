@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://8qveqxyd3us7"]
+
+[ext_resource type="Texture2D" uid="uid://cbhowb4dbv73q" path="res://Assets/texture_light1.png" id="1_veqsg"]
+
+[node name="Light" type="Node2D" unique_id=76849727]
+
+[node name="Light" type="PointLight2D" parent="." unique_id=204735298]
+scale = Vector2(0.50156254, 0.5)
+blend_mode = 2
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = ExtResource("1_veqsg")
+texture_scale = 2.0
